@@ -7,6 +7,11 @@ import { Panel, Group, Separator } from 'react-resizable-panels';
 
 import { Routes, Route } from 'react-router-dom';
 
+import Welcome from './pages/Welcome';
+import Style from './pages/Style';
+import Colors from './pages/Colors';
+import Favicon from './pages/Favicon';
+
 interface ContentType {
   id: string;
   html: string;
@@ -75,13 +80,16 @@ function App() {
                 <Playground cssSource="https://assets.scu.edu/public/scu.2.3.css" items={contentTypeData} />
               </Panel>
               <Separator className="h-2 bg-gray-200 hover:bg-gray-500" />
-              <Panel>
+              <Panel defaultSize={250}>
                 <CodePanel items={contentTypeData} />
               </Panel>
             </Group>
           } />
 
-          <Route path="/style-guide" element={<></>} />
+          <Route path="/" element={<Welcome />} />
+          <Route path="/style" element={<Style />} />
+          <Route path="/colors" element={<Colors />} />
+          <Route path="/favicon" element={<Favicon />} />
         </Routes>
       </Panel>
     </Group >

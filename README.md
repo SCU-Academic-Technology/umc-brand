@@ -1,73 +1,85 @@
-# React + TypeScript + Vite
+# SCU Design System Viewer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based component library viewer for the Santa Clara University Design System. This application dynamically scrapes content types from the SCU brand site, providing developers with a live preview playground and copy-paste ready HTML snippets.
 
-Currently, two official plugins are available:
+Built with **Vite**, **React**, **TypeScript**, and **Tailwind CSS**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+* **Dynamic Content Loading:** Fetches and parses component data directly from SCU's existing assets.
+* **Interactive Playground:** Live preview of components with isolated styles (Shadow DOM/Iframe).
+* **Developer Experience:**
+    * Syntax highlighting (Prism.js)
+    * One-click code copying
+    * Prettier formatting for raw HTML
+* **Workspace Customization:** Resizable split-pane layout (IDE style) for sidebar, preview, and code panels.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Prerequisites
 
-## Expanding the ESLint configuration
+* Node.js (v18 or higher recommended)
+* npm or yarn
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Getting Started
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 1. Clone the repository
+```bash
+git clone [https://github.com/your-username/scu-design-system.git](https://github.com/your-username/scu-design-system.git)
+cd scu-design-system
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Install dependencies
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+npm install
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+
+### 3. Run the development server
+
+```bash
+npm run dev
+
+```
+
+The app will be available at `http://localhost:5173`.
+
+> **Note on CORS:** The development server uses a proxy to fetch data from `scu.edu` to avoid CORS errors. This is configured in `vite.config.ts`.
+
+## Building for Production
+
+### 1. Configure Base Path
+
+Ensure `vite.config.ts` has the correct base URL for your server environment:
+
+```typescript
+// vite.config.ts
+export default defineConfig({
+  base: '/put/path/here/', // Update this to your actual deployment path
+  // ...
+})
+```
+
+### 2. Build
+
+```bash
+npm run build
+```
+
+This generates a `dist` folder containing the static assets.
+
+### 3. Deployment
+
+Upload the contents of the `dist` folder to your web server.
+
+If deploying to a static server (like Apache/FTP) that handles 404s strictly, ensure you are using `HashRouter` in `main.tsx` or have a `.htaccess` rewrite rule to support client-side routing.
+
+## Tech Stack
+
+* **Framework:** React + Vite
+* **Styling:** Tailwind CSS
+* **Routing:** React Router DOM
+* **Utilities:**
+  * `react-resizable-panels` (Layout)
+  * `prismjs` (Syntax Highlighting)
+  * `prettier` (Code Formatting)

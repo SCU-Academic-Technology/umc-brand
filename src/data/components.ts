@@ -1,0 +1,15 @@
+export const componentLinks = [
+  { id: "0", name: "Accordion" },
+  { id: "1", name: "Agenda" },
+  { id: "2", name: "Alert" },
+  { id: "3", name: "Announcement" },
+  { id: "4", name: "Billboard" },
+  { id: "5", name: "Block" },
+  { id: "6", name: "Buttons" },
+  { id: "7", name: "By the Numbers" },
+  { id: "8", name: "Call to Action" },
+  { id: "9", name: "Cards" },
+  { id: "10", name: "Event List" },
+  { id: "11", name: "Image Gallery" },
+  { id: "12", name: "Infographics" },
+];

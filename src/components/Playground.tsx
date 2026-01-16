@@ -1,4 +1,6 @@
 import { useParams } from 'react-router-dom';
+import { componentLinks } from '../data/components';
+import { useState } from 'react';
 
 interface ContentType {
   id: string;
@@ -6,8 +8,12 @@ interface ContentType {
 }
 
 function Playground({ cssSource, items }: { cssSource: string, items: ContentType[] }) {
+
+  const [displayOption, setDisplayOption] = useState(0);
+
   const { componentId } = useParams<{ componentId: string }>();
   const activeItem = items.find((item) => item.id === "content-type-" + componentId);
+  const componentName = componentLinks.find((item) => item.id == componentId)?.name;
 
   if (items.length === 0) <div className="p-8">Loading...</div>;
   if (!activeItem) return <div className="p-8">Component "{componentId}" not found.</div>;
@@ -58,18 +64,39 @@ function Playground({ cssSource, items }: { cssSource: string, items: ContentTyp
     </html>
   `;
 
+  const handleChange = (e: any) => {
+    // The value will be the string "responsive", "tablet", or "mobile"
+    const selectedValue = e.target.value;
+    if (selectedValue === "responsive") setDisplayOption(0);
+    else if (selectedValue === "tablet") setDisplayOption(1);
+    else if (selectedValue === "mobile") setDisplayOption(2);
+  };
+
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full p-4 bg-gray-100">
+      <div className="flex p-2">
+        <h1>{componentName}</h1>
+        <select
+          className="focus:bg-gray-200 bg-gray-100 rounded-md p-2 mx-4"
+          name="widths"
+          onChange={handleChange}
+        >
+          <option value="responsive">Desktop (100%)</option>
+          <option value="tablet">Tablet (768px)</option>
+          <option value="mobile">Mobile (475px)</option>
+        </select>
+      </div>
       <iframe
         title="Component Preview"
         srcDoc={srcDoc}
-        className="w-full h-full border-none"
+        className={`${displayOption === 0 ? "w-full" : ""} 
+          ${displayOption === 1 ? "w-3xl" : ""} 
+          ${displayOption === 2 ? "w-106.25" : ""} 
+          h-9/10 border-none bg-white mx-auto`}
         sandbox="allow-scripts"
       />
     </div>
   );
-
-
-}
+};
 
 export default Playground;
