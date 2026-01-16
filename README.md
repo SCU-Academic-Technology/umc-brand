@@ -23,9 +23,8 @@ Built with **Vite**, **React**, **TypeScript**, and **Tailwind CSS**.
 
 ### 1. Clone the repository
 ```bash
-git clone [https://github.com/your-username/scu-design-system.git](https://github.com/your-username/scu-design-system.git)
-cd scu-design-system
-
+git clone [https://github.com/SCU-Academic-Technology/umc-brand.git](https://github.com/SCU-Academic-Technology/umc-brand.git)
+cd 
 ```
 
 ### 2. Install dependencies
