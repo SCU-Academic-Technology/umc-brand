@@ -12,4 +12,7 @@ export const componentLinks = [
   { id: "10", name: "Event List" },
   { id: "11", name: "Image Gallery" },
   { id: "12", name: "Infographics" },
+  { id: "13", name: "Jumbotron" },
+  { id: "14", name: "Link Group" },
+  { id: "15", name: "List Item" },
 ];

@@ -26,6 +26,7 @@ function Playground({ cssSource, items }: { cssSource: string, items: ContentTyp
 
     <!-- toolkit styles -->
     <link rel="stylesheet" href="${cssSource}" media="screen" />
+    <link href="/media/scuedu/style-assets/stylesheets/f.css" rel="stylesheet">
     <link rel="stylesheet" href="<t4 type='media' formatter='path/*' id='288401' />" />
 
     <!-- Avenir Next -->

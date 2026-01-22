@@ -23,7 +23,20 @@ body {
     @apply text-xl font-semibold m-2;
   }
 
+  h3 {
+    @apply text-xl font-semibold m-2;
+  }
   p {
     @apply m-2;
+  }
+
+  a {
+    @apply text-red-900 hover:underline;
+  }
+}
+
+@layer components {
+  .container {
+    @apply mx-auto max-w-4xl p-8;
   }
 }

@@ -12,6 +12,9 @@ import Style from './pages/Style';
 import Colors from './pages/Colors';
 import Favicon from './pages/Favicon';
 
+
+import Logos from './pages/Logos';
+
 interface ContentType {
   id: string;
   html: string;
@@ -90,6 +93,9 @@ function App() {
           <Route path="/style" element={<Style />} />
           <Route path="/colors" element={<Colors />} />
           <Route path="/favicon" element={<Favicon />} />
+
+
+          <Route path="/logos" element={<Logos />} />
         </Routes>
       </Panel>
     </Group >

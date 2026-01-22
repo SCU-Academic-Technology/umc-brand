@@ -6,7 +6,7 @@ import { componentLinks } from '../data/components';
 function Navbar() {
 
   const getLinkClass = ({ isActive }: { isActive: boolean }) => {
-    return `p-2 pl-5 rounded transition-colors ${isActive
+    return `p-2 pl-5 rounded transition-colors cursor-pointer ${isActive
       ? "font-bold bg-blue-100"  // Active Styles
       : "text-gray-700 hover:bg-gray-200"      // Inactive Styles
       }`;
@@ -16,10 +16,10 @@ function Navbar() {
   return (
     <>
       <div className="w-full h-full bg-gray-50 p-4 overflow-y-scroll overflow-x-hidden">
-        <h1>SCU Design System</h1>
 
         <img className="max-w-50" src={logo} alt="SCU logo" />
 
+        <h1 className="text-2xl mb-5">Design System</h1>
         <h2 className="text-xl font-semibold">Style Guide</h2>
 
         <div className="flex flex-col">
@@ -31,6 +31,15 @@ function Navbar() {
           </NavLink>
           <NavLink to="/colors" className={getLinkClass}>
             Colors
+          </NavLink>
+        </div>
+
+
+        <h2 className="text-xl font-semibold">Downloadable Assets</h2>
+
+        <div className="flex flex-col">
+          <NavLink to="/logos" className={getLinkClass}>
+            Logos &amp; Lockups
           </NavLink>
           <NavLink to="/favicon" className={getLinkClass}>
             Favicon
