@@ -59,7 +59,20 @@ function App() {
 
   if (!loaded) {
     return (
-      <h1>Loading</h1>
+      <Group className="flex h-screen w-screen overflow-hidden bg-white">
+        {/* LEFT COLUMN CONTAINER: navbar */}
+        <Panel defaultSize={300} className="border-r border-gray-200">
+          <Navbar
+          />
+        </Panel>
+
+        <Separator className="w-2 bg-gray-200 hover:bg-gray-500" />
+
+        {/* RIGHT COLUMN CONTAINER: playground + code */}
+        <Panel className="flex-1 flex flex-col h-full min-w-0">
+          <h1>Loading</h1>
+        </Panel>
+      </Group >
     )
   }
 

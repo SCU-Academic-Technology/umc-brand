@@ -16,18 +16,18 @@ body {
 
 @layer base {
   h1 {
-    @apply text-2xl font-semibold m-2;
+    @apply text-4xl font-semibold my-2;
   }
 
   h2 {
-    @apply text-xl font-semibold m-2;
+    @apply text-xl font-semibold my-2;
   }
 
   h3 {
-    @apply text-xl font-semibold m-2;
+    @apply text-xl font-semibold my-2;
   }
   p {
-    @apply m-2;
+    @apply my-2;
   }
 
   a {
@@ -37,6 +37,6 @@ body {
 
 @layer components {
   .container {
-    @apply mx-auto max-w-4xl p-8;
+    @apply mx-auto p-16 overflow-scroll;
   }
 }

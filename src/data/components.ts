@@ -15,4 +15,9 @@ export const componentLinks = [
   { id: "13", name: "Jumbotron" },
   { id: "14", name: "Link Group" },
   { id: "15", name: "List Item" },
+  { id: "16", name: "Marketing Banner" },
+  { id: "17", name: "Ordered List" },
+  { id: "18", name: "Panel" },
+  { id: "19", name: "Person Spotlight" },
+  { id: "20", name: "" },
 ];
