@@ -11,6 +11,7 @@ import Welcome from './pages/Welcome';
 import Style from './pages/Style';
 import Colors from './pages/Colors';
 import Favicon from './pages/Favicon';
+import Typography from './pages/Typography';
 
 
 import Logos from './pages/Logos';
@@ -70,7 +71,9 @@ function App() {
 
         {/* RIGHT COLUMN CONTAINER: playground + code */}
         <Panel className="flex-1 flex flex-col h-full min-w-0">
-          <h1>Loading</h1>
+          <div className="container mx-auto p-16">
+            <h1>Loading</h1>
+          </div>
         </Panel>
       </Group >
     )
@@ -106,6 +109,7 @@ function App() {
           <Route path="/style" element={<Style />} />
           <Route path="/colors" element={<Colors />} />
           <Route path="/favicon" element={<Favicon />} />
+          <Route path="/typography" element={<Typography />} />
 
 
           <Route path="/logos" element={<Logos />} />

@@ -24,13 +24,13 @@ function ColorChip({ name, hex, textColor, isFirst }: ColorChipProps) {
   }
 
   return (
-    <div className={`w-full h-25 mt-auto ${isFirst ? '' : '-ml-32'} relative hover:h-48 ${isCopied ? 'hover:rotate-2' : 'hover:rotate-1'} origin-center 
-      transition-all duration-75 rounded-t-xl -mb-5 shadow-md`}
+    <div className={`w-full h-25 mt-auto ${isFirst ? 'ml-0.5' : '-ml-32'} relative hover:h-46 ${isCopied ? 'hover:rotate-2' : 'hover:rotate-1'} 
+origin-center transition-all duration-75 rounded-t-xl -mb-5 shadow-lg`}
       onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} onClick={() => handleCopy()} style={{ backgroundColor: hex }}>
 
       <div className={`${hovered ? 'opacity-100' : 'opacity-0'} transition-opacity duration-75 pt-1.5 pl-3`} style={{ color: textColor }}>
-        <p>{isCopied ? "Copied!" : name}</p>
-        <p>{hex}</p>
+        <p className="mb-0">{isCopied ? "Copied!" : name}</p>
+        <p className="mt-0">{hex}</p>
 
       </div>
     </div>

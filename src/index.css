@@ -27,7 +27,7 @@ body {
     @apply text-xl font-semibold my-2;
   }
   p {
-    @apply my-2;
+    @apply my-2 mb-4;
   }
 
   a {

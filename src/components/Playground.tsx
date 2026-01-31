@@ -74,26 +74,29 @@ function Playground({ cssSource, items }: { cssSource: string, items: ContentTyp
   };
 
   return (
-    <div className="w-full h-full p-4 bg-gray-100">
-      <div className="flex p-2">
+    <div className="w-full h-full">
+      <div className="flex items-baseline p-4">
         <h1>{componentName}</h1>
+        <label className="sr-only" htmlFor="widths">Choose a screen width:</label>
         <select
-          className="focus:bg-gray-200 bg-gray-100 rounded-md p-2 mx-4"
+          className="gray-200 rounded-sm mx-8 h-8 border border-black"
           name="widths"
           onChange={handleChange}
+          size={1}
         >
           <option value="responsive">Desktop (100%)</option>
           <option value="tablet">Tablet (768px)</option>
           <option value="mobile">Mobile (475px)</option>
         </select>
       </div>
+      <hr />
       <iframe
         title="Component Preview"
         srcDoc={srcDoc}
         className={`${displayOption === 0 ? "w-full" : ""} 
           ${displayOption === 1 ? "w-3xl" : ""} 
           ${displayOption === 2 ? "w-106.25" : ""} 
-          h-9/10 border-none bg-white mx-auto`}
+          h-9/10 border-none bg-white mx-auto m-4`}
         sandbox="allow-scripts"
       />
     </div>

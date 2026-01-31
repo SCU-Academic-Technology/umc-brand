@@ -9,19 +9,17 @@ function Favicon() {
   const codeSnippet = `<link rel="icon" type="image/png" href="/favicon-96x96-icon-img.png" />`;
 
   return (
-    <div className="container mx-auto max-w-4xl p-8">
+    <div className="container mx-auto p-16">
 
       {/* HEADER SECTION */}
       <div className="">
         <h1 className="text-4xl font-bold text-gray-900 mb-4">
           Favicon
         </h1>
-        <p className="text-gray-800">
+        <p className="text-gray-800 mb-8">
           An icon that displays in a browser's tab, bookmarks, history, and home screen shortcuts.
         </p>
       </div>
-
-      <hr className="my-4 border-gray-300" />
 
       {/* DOWNLOAD CARD */}
       <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm hover:shadow-md transition-shadow">
@@ -54,8 +52,7 @@ function Favicon() {
         </a>
       </div>
 
-      {/* PREVIEW SECTION (Optional) */}
-      <div className="mt-12">
+      <div className="mt-8">
         <h2 className="text-2xl mb-6">Preview</h2>
         <div className="flex gap-8 items-end">
           <div className="text-center">
@@ -83,7 +80,7 @@ function Favicon() {
       <div className="mt-12">
         <h2 className="text-2xl">Quick Start</h2>
         <p className="text-gray-800">
-          In most cases, your browser will display fine by using <b>favicon-96x96-icon-img.png</b>.
+          In most cases, browsers will display <a href="/favicon-96x96-icon-img.png">favicon-96x96-icon-img.png</a> correctly.
           For example, this website uses the following code in the head for its favicon:
         </p>
 

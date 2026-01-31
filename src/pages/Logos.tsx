@@ -3,7 +3,7 @@ function Logos() {
 
   return (
     <>
-      <div className="container mx-auto max-w-4xl p-8">
+      <div className="container mx-auto p-16">
         <h1 className="text-4xl">
           Logos and Lockups
         </h1>

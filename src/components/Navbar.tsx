@@ -32,10 +32,13 @@ function Navbar() {
           <NavLink to="/colors" className={getLinkClass}>
             Colors
           </NavLink>
+          <NavLink to="/typography" className={getLinkClass}>
+            Typography
+          </NavLink>
         </div>
 
 
-        <h2 className="text-xl font-semibold mx-2">Downloadable Assets</h2>
+        <h2 className="text-xl font-semibold mx-2">Assets</h2>
 
         <div className="flex flex-col">
           <NavLink to="/logos" className={getLinkClass}>
