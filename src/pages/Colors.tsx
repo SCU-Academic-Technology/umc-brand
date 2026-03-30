@@ -1,5 +1,6 @@
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useLocation } from "react-router-dom"
 import ColorChip from "../components/ColorChip"
 import ColorButton from "../components/ColorButton"
 import { brandColors } from "../data/brandColors"
@@ -57,8 +58,15 @@ function PassFail({ pass }: { pass: boolean }) {
 }
 
 function Colors() {
+  const location = useLocation();
   const [selectedColor, setSelectedColor] = useState("#A32035");
   const [selectedTextColor, setSelectedTextColor] = useState("#FFFFFF");
+
+  useEffect(() => {
+    if (location.hash === '#accessible-combinations') {
+      document.getElementById('accessible-combinations')?.scrollIntoView();
+    }
+  }, [location.hash]);
 
   const handleSelectBackground = (hex: string) => {
     setSelectedColor(hex);
@@ -144,6 +152,8 @@ function Colors() {
 
             <p>Use this tool to find color combinations that are accessible and easy for everyone to read. Web accessibility guidelines (WCAG) set minimum contrast levels between text and background to ensure content is legible.</p>
 
+            <hr className="border-t border-gray-200 my-5" />
+
             <h3>Choose a Background Color</h3>
 
             <div className="flex flex-wrap gap-4">
@@ -157,6 +167,8 @@ function Colors() {
                 />
             ))}
             </div>
+
+            <hr className="border-t border-gray-200 my-5" />
 
             <h3>Choose a Text Color</h3>
 
@@ -174,6 +186,8 @@ function Colors() {
                 ))}
             </div>
 
+            <hr className="border-t border-gray-200 my-5" />
+
             <h3>Your Color Contrast Results</h3>
 
             {(() => {
@@ -181,7 +195,7 @@ function Colors() {
             return (
                 <div className="flex flex-col lg:flex-row gap-8 mt-4 bg-[#F8F9FA]">
                     <div className="flex flex-col gap-3 w-full lg:w-1/3 p-[2rem]">
-                        <p className="font-bold">Contrast Ratio</p>
+                        <p className="text-2xl font-bold">Contrast Ratio</p>
                         <p className="text-6xl">{ratio.toFixed(2)}:1</p>
                         <div className="flex gap-8 mt-2">
                         <div>
