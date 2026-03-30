@@ -1,22 +1,22 @@
 import { useParams, useLocation } from 'react-router-dom';
 import { componentLinks } from '../data/components';
 import { lockupOptions } from '../data/components';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface ContentType {
   id: string;
   html: string;
 }
 
-function Playground({ cssSource, items, siteMainHeader, lockupHeader, noLockupHeader, footer }: { cssSource: string, items: ContentType[], siteMainHeader: string, lockupHeader: string, noLockupHeader: string, footer: string }) {
+function Playground({ cssSource, items, siteMainHeader, lockupHeader, noLockupHeader, footer, onHtmlChange }: { cssSource: string, items: ContentType[], siteMainHeader: string, lockupHeader: string, noLockupHeader: string, footer: string, onHtmlChange?: (html: string) => void }) {
 
   const [displayOption, setDisplayOption] = useState(0);
   const [lockupValue, setLockupValue] = useState("");
   const { componentId } = useParams<{ componentId: string }>();
   const location = useLocation();
 
-  let activeItem;
-  let componentName;
+  let activeItem: { id: string; html: string } | undefined;
+  let componentName: string | undefined;
 
   let contentTypeView = false;
   let headerView = false;
@@ -62,6 +62,10 @@ function Playground({ cssSource, items, siteMainHeader, lockupHeader, noLockupHe
     componentName = "Footer";
     footerView = true;
   }
+
+  useEffect(() => {
+    if (activeItem?.html) onHtmlChange?.(activeItem.html);
+  }, [activeItem?.html]);
 
   if (items.length === 0 && !activeItem){
     return (

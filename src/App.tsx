@@ -5,7 +5,7 @@ import CodePanel from "./components/CodePanel";
 
 import { Panel, Group, Separator } from "react-resizable-panels";
 
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 import Welcome from "./pages/Welcome";
 import Style from "./pages/Style";
@@ -20,8 +20,34 @@ interface ContentType {
   html: string;
 }
 
-function App() {
+interface PlaygroundRouteProps {
+  cssSource: string;
+  items: ContentType[];
+  siteMainHeader: string;
+  lockupHeader: string;
+  noLockupHeader: string;
+  footer: string;
+}
 
+function PlaygroundRoute(props: PlaygroundRouteProps) {
+  const [activeHtml, setActiveHtml] = useState("");
+  return (
+    <Group className="h-full" orientation="vertical">
+      <Panel>
+        <Playground {...props} onHtmlChange={setActiveHtml} />
+      </Panel>
+      <Separator className="h-2 bg-gray-200 hover:bg-gray-500" />
+      <Panel defaultSize={250}>
+        <CodePanel html={activeHtml} />
+      </Panel>
+    </Group>
+  );
+}
+
+function App() {
+  const location = useLocation();
+  const needsData = location.pathname.startsWith('/components/') ||
+    ['/main-header', '/lockup-header', '/no-lockup-header', '/footer'].includes(location.pathname);
 
   const [contentTypeData, setContentTypeData] = useState<ContentType[]>([]);
 
@@ -95,7 +121,7 @@ function App() {
     fetchData();
   }, []);
 
-  if (!loaded) {
+  if (!loaded && needsData) {
     return (
       <Group className="flex h-screen w-screen overflow-hidden bg-white">
         {/* LEFT COLUMN CONTAINER: navbar */}
@@ -128,61 +154,13 @@ function App() {
         {/* RIGHT COLUMN CONTAINER: playground + code */}
         <Panel className="flex-1 flex flex-col h-full min-w-0">
           <Routes>
-            <Route
-              path="/components/:componentId"
-              element={
-                <Group className="h-full" orientation="vertical">
-                  <Panel>
-                    <Playground
-                      cssSource={cssSource}
-                      items={contentTypeData}
-                      siteMainHeader={siteMainHeader}
-                      lockupHeader={lockupHeader}
-                      noLockupHeader={noLockupHeader}
-                      footer={siteFooter}
-                    />
-                  </Panel>
-                  <Separator className="h-2 bg-gray-200 hover:bg-gray-500" />
-                  <Panel defaultSize={250}>
-                    <CodePanel items={contentTypeData} />
-                  </Panel>
-                </Group>
-              }
-            />
-
-            {["/main-header", "/lockup-header", "/no-lockup-header"].map(
+            {["/components/:componentId", "/main-header", "/lockup-header", "/no-lockup-header", "/footer"].map(
               (path) => (
                 <Route
                   key={path}
                   path={path}
                   element={
-                    <Group className="h-full" orientation="vertical">
-                      <Panel>
-                        <Playground
-                          cssSource={cssSource}
-                          items={contentTypeData}
-                          siteMainHeader={siteMainHeader}
-                          lockupHeader={lockupHeader}
-                          noLockupHeader={noLockupHeader}
-                          footer={siteFooter}
-                        />
-                      </Panel>
-                      <Separator className="h-2 bg-gray-200 hover:bg-gray-500" />
-                      <Panel defaultSize={250}>
-                        <CodePanel items={contentTypeData} />
-                      </Panel>
-                    </Group>
-                  }
-                />
-              ),
-            )}
-
-            <Route
-              path="/footer"
-              element={
-                <Group className="h-full" orientation="vertical">
-                  <Panel>
-                    <Playground
+                    <PlaygroundRoute
                       cssSource={cssSource}
                       items={contentTypeData}
                       siteMainHeader={siteMainHeader}
@@ -190,21 +168,16 @@ function App() {
                       noLockupHeader={noLockupHeader}
                       footer={siteFooter}
                     />
-                  </Panel>
-                  <Separator className="h-2 bg-gray-200 hover:bg-gray-500" />
-                  <Panel defaultSize={250}>
-                    <CodePanel items={contentTypeData} />
-                  </Panel>
-                </Group>
-              }
-            />
+                  }
+                />
+              )
+            )}
 
             <Route path="/" element={<Welcome />} />
             <Route path="/style" element={<Style />} />
             <Route path="/colors" element={<Colors />} />
             <Route path="/favicon" element={<Favicon />} />
             <Route path="/typography" element={<Typography />} />
-
             <Route path="/logos" element={<Logos />} />
           </Routes>
         </Panel>

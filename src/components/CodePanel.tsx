@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
 import Prism from "prismjs";
 import "prismjs/themes/prism-coy.css";
 import "prismjs/components/prism-markup";
@@ -9,18 +8,10 @@ import { format } from "prettier/standalone";
 import * as parserHtml from "prettier/plugins/html";
 import * as parserBabel from "prettier/plugins/babel";
 
-interface ContentType {
-  id: string;
-  html: string;
-}
-
-function CodePanel({ items }: { items: ContentType[] }) {
-  const { componentId } = useParams<{ componentId: string }>();
+function CodePanel({ html }: { html: string }) {
   const [formattedHtml, setFormattedHtml] = useState("");
   const [isCopied, setIsCopied] = useState(false);
   const codeRef = useRef<HTMLElement>(null);
-
-  const activeItem = items.find((item) => item.id === "content-type-" + componentId);
 
   const getCleanHtml = (fullHtml: string) => {
     const parser = new DOMParser();
@@ -44,7 +35,7 @@ function CodePanel({ items }: { items: ContentType[] }) {
     return wrapper.innerHTML;
   };
 
-  const rawHtml = activeItem ? getCleanHtml(activeItem.html) : "";
+  const rawHtml = getCleanHtml(html);
 
   // Format with Prettier (Async)
   useEffect(() => {
@@ -73,8 +64,6 @@ function CodePanel({ items }: { items: ContentType[] }) {
     }
   }, [formattedHtml]);
 
-
-  // --- NEW: Copy Handler ---
   const handleCopy = async () => {
     if (!formattedHtml) return;
     try {

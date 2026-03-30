@@ -139,7 +139,7 @@ function Colors() {
         </p>
 
 
-        <div className="border border-black p-4">
+        <div className="border border-black p-4" id="accessible-combinations">
             <h2>Accessible Brand Color Combinations</h2>
 
             <p>Use this tool to find color combinations that are accessible and easy for everyone to read. Web accessibility guidelines (WCAG) set minimum contrast levels between text and background to ensure content is legible.</p>
