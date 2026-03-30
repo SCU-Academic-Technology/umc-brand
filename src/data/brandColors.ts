@@ -1,13 +1,12 @@
 // src/brandColors.ts
 
-// 1. Define the shape of a single color entry from your JSON
 type ColorDefinition = {
-  PMS?: number | string; // PMS can be a number (201) or string ("N/A")
+  PMS?: number | string;
   CMYK: number[];
   RGB: number[];
   HEX: string;
   "text-hex": string;
-  variants?: Record<string, any>; // We aren't using variants yet, but keeping them safe
+  variants?: Record<string, any>;
 };
 
 export const brandColors: Record<string, Record<string, ColorDefinition>> = {
@@ -38,7 +37,7 @@ export const brandColors: Record<string, Record<string, ColorDefinition>> = {
       CMYK: [58, 41, 34, 4],
       RGB: [121, 136, 154],
       HEX: "#758592",
-      "text-hex": "#EEECE9",
+      "text-hex": "#000000",
     },
     Black: {
       PMS: -1,
@@ -53,13 +52,13 @@ export const brandColors: Record<string, Record<string, ColorDefinition>> = {
       CMYK: [13, 76, 86, 2],
       RGB: [209, 92, 56],
       HEX: "#D15C3B",
-      "text-hex": "#FFFFFE",
+      "text-hex": "#000000",
       variants: {
         Light: {
           CMYK: [0, 72, 65, 0],
           RGB: [247, 109, 89],
           HEX: "#F76D59",
-          "text-hex": "#FFFFFF",
+          "text-hex": "#000000",
         },
         Dark: {
           CMYK: [21, 86, 100, 13],
@@ -73,19 +72,19 @@ export const brandColors: Record<string, Record<string, ColorDefinition>> = {
       CMYK: [0, 22, 100, 2],
       RGB: [255, 182, 0],
       HEX: "#FFB600",
-      "text-hex": "#FFFFFE",
+      "text-hex": "#000000",
       variants: {
         Light: {
           CMYK: [1, 16, 95, 0],
           RGB: [255, 210, 32],
           HEX: "#FFD220",
-          "text-hex": "#C97900",
+          "text-hex": "#875100",
         },
         Dark: {
           CMYK: [18, 57, 100, 4],
           RGB: [201, 121, 0],
           HEX: "#C97900",
-          "text-hex": "#FFFFFE",
+          "text-hex": "#000000",
         },
       },
     },
@@ -113,13 +112,13 @@ export const brandColors: Record<string, Record<string, ColorDefinition>> = {
       CMYK: [72, 35, 33, 3],
       RGB: [77, 135, 152],
       HEX: "#4D8798",
-      "text-hex": "#FFFFFE",
+      "text-hex": "#000000",
       variants: {
         Light: {
           CMYK: [45, 0, 40, 0],
           RGB: [137, 214, 176],
           HEX: "#89D6B0",
-          "text-hex": "#115D6F",
+          "text-hex": "#0E4F5E",
         },
         Dark: {
           CMYK: [91, 52, 43, 20],
@@ -159,13 +158,13 @@ export const brandColors: Record<string, Record<string, ColorDefinition>> = {
           CMYK: [20, 54, 0, 0],
           RGB: [207, 135, 205],
           HEX: "#CF87CD",
-          "text-hex": "#633573",
+          "text-hex": "#4C2959",
         },
         Dark: {
           CMYK: [71, 92, 24, 10],
           RGB: [99, 53, 115],
           HEX: "#633573",
-          "text-hex": "#CF87CD",
+          "text-hex": "#DBA4D9",
         },
       },
     },
@@ -179,7 +178,7 @@ export const brandColors: Record<string, Record<string, ColorDefinition>> = {
           CMYK: [0, 84, 36, 0],
           RGB: [255, 77, 114],
           HEX: "#FF4D72",
-          "text-hex": "#810039",
+          "text-hex": "#590027",
         },
         Dark: {
           CMYK: [33, 100, 60, 33],
@@ -215,7 +214,7 @@ export const brandColors: Record<string, Record<string, ColorDefinition>> = {
       CMYK: [5, 7, 21, 0],
       RGB: [241, 231, 204],
       HEX: "#F1E7CC",
-      "text-hex": "#8E7B66",
+      "text-hex": "#746554",
       variants: {
         Light: {
           CMYK: [2, 3, 9, 0],
@@ -247,7 +246,7 @@ export const brandColors: Record<string, Record<string, ColorDefinition>> = {
           CMYK: [42, 46, 59, 12],
           RGB: [142, 123, 102],
           HEX: "#8E7B66",
-          "text-hex": "#F0E9E2",
+          "text-hex": "#000000",
         },
       },
     },

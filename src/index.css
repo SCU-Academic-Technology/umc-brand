@@ -20,7 +20,7 @@ body {
   }
 
   h2 {
-    @apply text-xl font-semibold my-2;
+    @apply text-2xl font-semibold my-2;
   }
 
   h3 {
@@ -31,7 +31,7 @@ body {
   }
 
   a {
-    @apply text-red-900 hover:underline;
+    @apply text-[#b30738] hover:underline;
   }
 }
 

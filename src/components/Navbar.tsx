@@ -26,9 +26,6 @@ function Navbar() {
           <NavLink to="/" className={getLinkClass}>
             Welcome
           </NavLink>
-          <NavLink to="/style" className={getLinkClass}>
-            Style
-          </NavLink>
           <NavLink to="/colors" className={getLinkClass}>
             Colors
           </NavLink>
@@ -61,8 +58,18 @@ function Navbar() {
 
         <h2 className="text-xl font-semibold mx-2">Layout Components</h2>
         <div className="flex flex-col">
-          <NavLink to="/header" className={getLinkClass}>
-            Library Header
+          <NavLink to="/main-header" className={getLinkClass}>
+            Main Header
+          </NavLink>
+          <NavLink to="/lockup-header" className={getLinkClass}>
+            Header with Lockup
+          </NavLink>
+          <NavLink to="/no-lockup-header" className={getLinkClass}>
+            Header without Lockup
+          </NavLink>
+
+          <NavLink to="/footer" className={getLinkClass}>
+            Footer
           </NavLink>
         </div>
       </div>

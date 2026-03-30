@@ -1,6 +1,6 @@
-import { useParams, useLocation } from 'react-router-dom';
+
+import { useParams } from 'react-router-dom';
 import { componentLinks } from '../data/components';
-import { lockupOptions } from '../data/components';
 import { useState } from 'react';
 
 interface ContentType {
@@ -8,72 +8,16 @@ interface ContentType {
   html: string;
 }
 
-function Playground({ cssSource, items, siteMainHeader, lockupHeader, noLockupHeader, footer }: { cssSource: string, items: ContentType[], siteMainHeader: string, lockupHeader: string, noLockupHeader: string, footer: string }) {
+function Header({ cssSource, items }: { cssSource: string, items: ContentType[] }) {
 
   const [displayOption, setDisplayOption] = useState(0);
-  const [lockupValue, setLockupValue] = useState("");
+
   const { componentId } = useParams<{ componentId: string }>();
-  const location = useLocation();
+  const activeItem = items.find((item) => item.id === "content-type-" + componentId);
+  const componentName = componentLinks.find((item) => item.id == componentId)?.name;
 
-  let activeItem;
-  let componentName;
-
-  let contentTypeView = false;
-  let headerView = false;
-  let footerView = false;
-
-  // check what section user selected
-  if (location.pathname.includes('/components/')) {
-    activeItem = items.find((item) => item.id === "content-type-" + componentId);
-    componentName = componentLinks.find((item) => item.id == componentId)?.name;
-    contentTypeView = true;
-  }
-  else if (location.pathname.includes('/main-header')) {
-    activeItem = {
-      id: 'header',
-      html: siteMainHeader,
-    };
-    componentName = "Site Main Header";
-    headerView = true;
-  }
-  else if (location.pathname.includes('/lockup-header')) {
-    activeItem = {
-      id: 'header',
-      html: lockupValue
-        ? lockupHeader.replace(/fa-alumni-association/g, lockupValue)
-        : lockupHeader,
-    };
-    componentName = "Site Specific Header with Lockup";
-    headerView = true;
-  }
-  else if (location.pathname.includes('/no-lockup-header')) {
-    activeItem = {
-      id: 'header',
-      html: noLockupHeader,
-    };
-    componentName = "Site Specific Header with no Lockup";
-    headerView = true;
-  }
-  else if (location.pathname.includes('/footer')) {
-    activeItem = {
-      id: 'footer',
-      html: footer,
-    };
-    componentName = "Footer";
-    footerView = true;
-  }
-
-  if (items.length === 0 && !activeItem){
-    return (
-        <div className="w-full h-full bg-neutral-100">
-            <div className="flex items-baseline p-4 bg-white">
-                <h1>Loading...</h1>
-            </div>
-        </div>
-    );
-  }
-
-  if (!activeItem) return <div className="p-8">Component Not Found</div>;
+  if (items.length === 0) <div className="p-8">Loading...</div>;
+  if (!activeItem) return <div className="p-8">Component "{componentId}" not found.</div>;
 
   const head = `
     <base href="https://www.scu.edu/">
@@ -105,11 +49,10 @@ function Playground({ cssSource, items, siteMainHeader, lockupHeader, noLockupHe
     <html>
       <head>${head}</head>
       <body>
-      ${(headerView || footerView) ? `${activeItem.html}` : ''} 
-      ${contentTypeView ? `<main id="content">${activeItem.html}</main>` : ''}
+      <main id="content">
+        ${activeItem.html}
+      </main>
       </body>
-      <script src="https://assets.scu.edu/public/js/weather-widget.js"></script>
-      <script src="https://assets.scu.edu/public/js/animation-sunrise.js"></script>
       <script>
         $(document).ready(function () {
         if ($('.sdj') || $('.jumbotron')) {
@@ -159,24 +102,6 @@ function Playground({ cssSource, items, siteMainHeader, lockupHeader, noLockupHe
           <option value="tablet">Tablet (768px)</option>
           <option value="mobile">Mobile (475px)</option>
         </select>
-
-        {headerView && <>
-          <label className="sr-only" htmlFor="lockups">Choose a Lockup:</label>
-          <select
-            className="gray-200 rounded-sm mx-2 h-8 border border-black max-w-[200px]"
-            name="lockups"
-            onChange={(e) => setLockupValue(e.target.value)} // Update your state here
-            defaultValue="" // Default to standard/empty
-          >
-            <option value="">Standard (Default)</option>
-            {lockupOptions.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-        </>
-        }
       </div>
       <hr />
       <iframe
@@ -192,4 +117,4 @@ function Playground({ cssSource, items, siteMainHeader, lockupHeader, noLockupHe
   );
 };
 
-export default Playground;
+export default Header;
