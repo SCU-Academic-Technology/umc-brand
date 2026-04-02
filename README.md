@@ -75,21 +75,27 @@ Upload the contents of the `dist` folder to your web server.
 
 ```text
 src/
-├── assets/            # Static assets (logos, icons)
-├── components/        # Reusable UI components
-│   ├── CodePanel.tsx  # Syntax highlighting & copy functionality
-│   ├── Navbar.tsx     # Sidebar navigation
-│   └── Playground.tsx # Iframe-based component preview
+├── assets/                # Static assets (logos, icons)
+├── components/            # Reusable UI components
+│   ├── CodePanel.tsx      # Syntax highlighting & copy functionality
+│   ├── ColorButton.tsx    # Clickable color swatch button
+│   ├── ColorChip.tsx      # Color chip display component
+│   ├── Navbar.tsx         # Sidebar navigation
+│   └── Playground.tsx     # Iframe-based component preview
 ├── data/
-│   └── components.ts  # Static definitions for content types
-├── pages/             # Static information pages
-│   ├── Colors.tsx
-│   ├── Favicon.tsx
-│   ├── Style.tsx
-│   └── Welcome.tsx
-├── App.tsx            # Main layout & data fetching logic
-├── index.css          # Tailwind & global styles
-└── main.tsx           # Entry point & Router configuration
+│   ├── brandColors.ts     # SCU brand color definitions
+│   └── components.ts      # Static definitions for content types
+├── pages/                 # Route pages
+│   ├── Colors.tsx         # Brand colors & accessibility checker
+│   ├── Favicon.tsx        # Favicon assets
+│   ├── Header.tsx         # Header/footer component page
+│   ├── Logos.tsx          # Logo assets
+│   ├── Style.tsx          # Style guide
+│   ├── Typography.tsx     # Typeface specimens
+│   └── Welcome.tsx        # Landing page
+├── App.tsx                # Main layout & data fetching logic
+├── index.css              # Tailwind & global styles
+└── main.tsx               # Entry point & Router configuration
 ```
 
 ## Tech Stack

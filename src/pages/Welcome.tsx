@@ -75,7 +75,7 @@ function Welcome() {
   const fade = `linear-gradient(to right, transparent 0px, transparent ${textRight}px, black ${textRight + 200}px)`;
 
   return (
-    <div className="relative h-full w-full overflow-hidden bg-white">
+    <div className="relative h-full w-full overflow-hidden bg-white flex items-center">
 
       {/* Hex background */}
       <svg
@@ -121,7 +121,7 @@ function Welcome() {
       )}
 
       {/* Welcome content */}
-      <div ref={textRef} className="relative z-10 p-16 h-full flex flex-col justify-center max-w-xl" id="content">
+      <div ref={textRef} className="relative z-10 p-16 h-auto flex flex-col justify-center max-w-xl" id="content">
         <h1 className="text-4xl mb-8">
           Welcome to Santa Clara University's Design System
         </h1>
@@ -129,7 +129,7 @@ function Welcome() {
           <a href="https://www.scu.edu/umc/brand/" className="inline-flex items-center">
             UMC Visual Identity Guidelines&nbsp;<ExternalLink size={14} />
           </a>
-          <a className="inline-flex items-center">
+          <a href="https://github.com/santaclarauniversity/santaclarauniversity.github.io" className="inline-flex items-center">
             Github repository&nbsp;<ExternalLink size={14} />
           </a>
           <NavLink to="/components/0" className="inline-flex items-center">

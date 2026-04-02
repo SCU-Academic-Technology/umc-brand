@@ -16,9 +16,10 @@ function Navbar() {
   return (
     <>
       <div className="w-full h-full bg-gray-50 p-4 overflow-y-scroll overflow-x-hidden">
-
-        <img className="max-w-50" src={logo} alt="SCU logo" />
-
+        <a href="https://www.scu.edu">
+            <img className="max-w-50" src={logo} alt="SCU logo" />
+            <span className="sr-only">To scu.edu homepage</span>
+        </a>
         <h1 className="text-2xl mb-5 mx-2">Design System</h1>
         <h2 className="text-xl font-semibold mx-2">Style Guide</h2>
 
