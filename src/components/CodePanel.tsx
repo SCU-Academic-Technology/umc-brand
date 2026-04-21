@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Prism from "prismjs";
-import "prismjs/themes/prism-coy.css";
+import "../styles/prism-light.css";
 import "prismjs/components/prism-markup";
 
 // prettier 
@@ -78,30 +78,26 @@ function CodePanel({ html }: { html: string }) {
   }
 
   return (
-    <div className="relative group w-full h-full bg-[#2d2d2d] text-sm font-mono leading-relaxed">
+    <div className="relative group w-full h-full bg-white text-sm font-mono leading-relaxed">
 
       {/* COPY BUTTON */}
       <button
-        onClick={handleCopy}
+        onClick={isCopied ? undefined : handleCopy}
         className={`
-          absolute top-4 right-4 z-10 
-          flex items-center justify-center p-2
-          rounded-md text-xs font-sans font-medium transition-all
-          border border-white/10 bg-gray cursor-pointer
-          ${isCopied
-            ? "bg-black text-green-400 border-green-500/20"
-            : "bg-black/70 text-gray-300 hover:bg-black hover:text-white"
-          }
+          absolute top-4 right-4 z-10
+          flex items-center justify-center p-1.5
+          rounded-md transition-all cursor-pointer border-none bg-transparent hover:text-gray-600 hover:bg-gray-100/80 text-gray-400
         `}
       >
         {isCopied ? (
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
         ) : (
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
         )}
+        <span className="sr-only">Copy Button</span>
       </button>
 
-      <pre className="m-0 bg-transparent h-full p-4">
+      <pre className="m-0 h-full p-4 overflow-auto">
         <code ref={codeRef} className="language-html">
           {formattedHtml}
         </code>

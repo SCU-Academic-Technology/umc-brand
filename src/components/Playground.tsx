@@ -1,10 +1,9 @@
 import { useParams, useLocation } from 'react-router-dom';
-import { componentLinks } from '../data/components';
 import { lockupOptions } from '../data/components';
 import { useState, useEffect } from 'react';
 
 interface ContentType {
-  id: string;
+  name: string;
   html: string;
 }
 
@@ -15,22 +14,23 @@ function Playground({ cssSource, items, siteMainHeader, lockupHeader, noLockupHe
   const { componentId } = useParams<{ componentId: string }>();
   const location = useLocation();
 
-  let activeItem: { id: string; html: string } | undefined;
+  let activeItem: ContentType | undefined;
   let componentName: string | undefined;
 
   let contentTypeView = false;
   let headerView = false;
+  let lockupHeaderView = false;
   let footerView = false;
 
   // check what section user selected
   if (location.pathname.includes('/components/')) {
-    activeItem = items.find((item) => item.id === "content-type-" + componentId);
-    componentName = componentLinks.find((item) => item.id == componentId)?.name;
+    activeItem = items[parseInt(componentId ?? '0')];
+    componentName = activeItem?.name;
     contentTypeView = true;
   }
   else if (location.pathname.includes('/main-header')) {
     activeItem = {
-      id: 'header',
+      name: 'header',
       html: siteMainHeader,
     };
     componentName = "Site Main Header";
@@ -38,17 +38,18 @@ function Playground({ cssSource, items, siteMainHeader, lockupHeader, noLockupHe
   }
   else if (location.pathname.includes('/lockup-header')) {
     activeItem = {
-      id: 'header',
+      name: 'header',
       html: lockupValue
         ? lockupHeader.replace(/fa-alumni-association/g, lockupValue)
         : lockupHeader,
     };
     componentName = "Site Specific Header with Lockup";
     headerView = true;
+    lockupHeaderView = true;
   }
   else if (location.pathname.includes('/no-lockup-header')) {
     activeItem = {
-      id: 'header',
+      name: 'header',
       html: noLockupHeader,
     };
     componentName = "Site Specific Header with no Lockup";
@@ -56,7 +57,7 @@ function Playground({ cssSource, items, siteMainHeader, lockupHeader, noLockupHe
   }
   else if (location.pathname.includes('/footer')) {
     activeItem = {
-      id: 'footer',
+      name: 'footer',
       html: footer,
     };
     componentName = "Footer";
@@ -83,6 +84,7 @@ function Playground({ cssSource, items, siteMainHeader, lockupHeader, noLockupHe
     <base href="https://www.scu.edu/">
     <link rel="stylesheet" href="https://kit.fontawesome.com/895f1e62c1.css" crossorigin="anonymous" />
     <script src="https://kit.fontawesome.com/8fd101ac29.js" crossorigin="anonymous"></script>
+    <link href="https://assets.scu.edu/assets/css/prism.css" rel="stylesheet" />
 
 
     <!-- toolkit styles -->
@@ -132,6 +134,9 @@ function Playground({ cssSource, items, siteMainHeader, lockupHeader, noLockupHe
           if ($('.animation-slide-up')) {
             $.getScript("https://scu.edu/media/scuedu/script-assets/animation.js");
           }
+          if ($('.code-block')) {
+            $.getScript("https://assets.scu.edu/assets/js/prism.js")
+          }
           $("table").addClass("table");
         });
         if ($('.story-subhead')) {
@@ -164,7 +169,7 @@ function Playground({ cssSource, items, siteMainHeader, lockupHeader, noLockupHe
           <option value="mobile">Mobile (475px)</option>
         </select>
 
-        {headerView && <>
+        {lockupHeaderView && <>
           <label className="sr-only" htmlFor="lockups">Choose a Lockup:</label>
           <select
             className="gray-200 rounded-sm mx-2 h-8 border border-black max-w-[200px]"
@@ -172,7 +177,6 @@ function Playground({ cssSource, items, siteMainHeader, lockupHeader, noLockupHe
             onChange={(e) => setLockupValue(e.target.value)} // Update your state here
             defaultValue="" // Default to standard/empty
           >
-            <option value="">Standard (Default)</option>
             {lockupOptions.map((option) => (
               <option key={option.value} value={option.value}>
                 {option.label}

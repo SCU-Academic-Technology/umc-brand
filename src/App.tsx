@@ -16,7 +16,7 @@ import Typography from "./pages/Typography";
 import Logos from "./pages/Logos";
 
 interface ContentType {
-  id: string;
+  name: string;
   html: string;
 }
 
@@ -81,11 +81,9 @@ function App() {
           contentTypesHtml,
           "text/html",
         );
-        const contentTypeElements = contentTypesDoc.querySelectorAll(
-          '[id^="content-type-"]',
-        );
+        const contentTypeElements = contentTypesDoc.querySelectorAll('.content-type');
         const formatted = Array.from(contentTypeElements).map((el) => ({
-          id: el.id,
+          name: (el as HTMLElement).dataset.name ?? '',
           html: el.outerHTML,
         }));
         setContentTypeData(formatted);
@@ -126,7 +124,7 @@ function App() {
       <Group className="flex h-screen w-screen overflow-hidden bg-white">
         {/* LEFT COLUMN CONTAINER: navbar */}
         <Panel defaultSize={300} className="border-r border-gray-200">
-          <Navbar />
+          <Navbar items={contentTypeData} loading={!loaded} />
         </Panel>
 
         <Separator className="w-2 bg-gray-200 hover:bg-gray-500" />
@@ -146,7 +144,7 @@ function App() {
       <Group className="flex h-screen w-screen overflow-hidden bg-white">
         {/* LEFT COLUMN CONTAINER: navbar */}
         <Panel defaultSize={300} className="border-r border-gray-200">
-          <Navbar />
+          <Navbar items={contentTypeData} loading={!loaded} />
         </Panel>
 
         <Separator className="w-2 bg-gray-200 hover:bg-gray-500" />
