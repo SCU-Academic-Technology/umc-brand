@@ -190,7 +190,7 @@ function Playground({ cssSource, items, siteMainHeader, lockupHeader, noLockupHe
           ${displayOption === 1 ? "w-3xl" : ""} 
           ${displayOption === 2 ? "w-106.25" : ""} 
           h-9/10 border-none bg-white mx-auto`}
-        sandbox="allow-scripts"
+        sandbox="allow-scripts allow-same-origin"
       />
     </div>
   );
