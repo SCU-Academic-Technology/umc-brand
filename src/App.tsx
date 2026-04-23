@@ -21,12 +21,13 @@ interface ContentType {
 }
 
 interface PlaygroundRouteProps {
-  cssSource: string;
   items: ContentType[];
   siteMainHeader: string;
   lockupHeader: string;
   noLockupHeader: string;
   footer: string;
+  siteHead: string;
+  afterFooter: string;
 }
 
 function PlaygroundRoute(props: PlaygroundRouteProps) {
@@ -55,10 +56,10 @@ function App() {
   const [lockupHeader, setLockupHeader] = useState("");
   const [noLockupHeader, setNoLockupHeader] = useState("");
   const [siteFooter, setSiteFooter] = useState("");
+  const [siteHead, setSiteHead] = useState("");
+  const [afterFooter, setAfterFooter] = useState("");
 
   const [loaded, setLoaded] = useState(false);
-
-  const cssSource = "https://assets.scu.edu/public/scu.2.3.css";
 
   useEffect(() => {
     const fetchData = async function () {
@@ -87,6 +88,14 @@ function App() {
           html: el.outerHTML,
         }));
         setContentTypeData(formatted);
+
+        setSiteHead(contentTypesDoc.head.innerHTML);
+
+        const lastFooterEnd = contentTypesHtml.lastIndexOf('</footer>');
+        const bodyEnd = contentTypesHtml.lastIndexOf('</body>');
+        if (lastFooterEnd !== -1 && bodyEnd !== -1) {
+          setAfterFooter(contentTypesHtml.slice(lastFooterEnd + '</footer>'.length, bodyEnd).trim());
+        }
 
         // Site main header (from content-types page)
         const mainHeader = contentTypesDoc.querySelector("header");
@@ -159,12 +168,13 @@ function App() {
                   path={path}
                   element={
                     <PlaygroundRoute
-                      cssSource={cssSource}
                       items={contentTypeData}
                       siteMainHeader={siteMainHeader}
                       lockupHeader={lockupHeader}
                       noLockupHeader={noLockupHeader}
                       footer={siteFooter}
+                      siteHead={siteHead}
+                      afterFooter={afterFooter}
                     />
                   }
                 />

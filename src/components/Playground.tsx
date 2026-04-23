@@ -7,7 +7,7 @@ interface ContentType {
   html: string;
 }
 
-function Playground({ cssSource, items, siteMainHeader, lockupHeader, noLockupHeader, footer, onHtmlChange }: { cssSource: string, items: ContentType[], siteMainHeader: string, lockupHeader: string, noLockupHeader: string, footer: string, onHtmlChange?: (html: string) => void }) {
+function Playground({ items, siteMainHeader, lockupHeader, noLockupHeader, footer, siteHead, afterFooter, onHtmlChange }: { items: ContentType[], siteMainHeader: string, lockupHeader: string, noLockupHeader: string, footer: string, siteHead: string, afterFooter: string, onHtmlChange?: (html: string) => void }) {
 
   const [displayOption, setDisplayOption] = useState(0);
   const [lockupValue, setLockupValue] = useState("");
@@ -80,69 +80,15 @@ function Playground({ cssSource, items, siteMainHeader, lockupHeader, noLockupHe
 
   if (!activeItem) return <div className="p-8">Component Not Found</div>;
 
-  const head = `
-    <base href="https://www.scu.edu/">
-    <link rel="stylesheet" href="https://kit.fontawesome.com/895f1e62c1.css" crossorigin="anonymous" />
-    <script src="https://kit.fontawesome.com/8fd101ac29.js" crossorigin="anonymous"></script>
-    <link href="https://assets.scu.edu/assets/css/prism.css" rel="stylesheet" />
-
-
-    <!-- toolkit styles -->
-    <link rel="stylesheet" href="${cssSource}" media="screen" />
-    <link href="/media/scuedu/style-assets/stylesheets/f.css" rel="stylesheet">
-    <link rel="stylesheet" href="<t4 type='media' formatter='path/*' id='288401' />" />
-
-    <!-- Avenir Next -->
-    <link rel="stylesheet" href="https://use.typekit.net/pcm8ajw.css">
-    <!-- Minion Pro-->
-    <link rel="stylesheet" href="https://use.typekit.net/pcm8ajw.css">
-
-    <!-- /toolkit styles -->
-
-    <script src="https://www.scu.edu/assets/public/scu.js"></script>
-
-    <style>
-      body { padding: 20px; background: transparent; }
-    </style>
-  `;
-
   const srcDoc = `
     <!DOCTYPE html>
     <html>
-      <head>${head}</head>
+      <head>${siteHead}</head>
       <body>
-      ${(headerView || footerView) ? `${activeItem.html}` : ''} 
+      ${(headerView || footerView) ? `${activeItem.html}` : ''}
       ${contentTypeView ? `<main id="content">${activeItem.html}</main>` : ''}
       </body>
-      <script src="https://assets.scu.edu/public/js/weather-widget.js"></script>
-      <script src="https://assets.scu.edu/public/js/animation-sunrise.js"></script>
-      <script>
-        $(document).ready(function () {
-        if ($('.sdj') || $('.jumbotron')) {
-            $('<link>')
-              .appendTo('head')
-              .attr({
-                type: 'text/css', 
-                rel: 'stylesheet',
-                href: 'https://assets.scu.edu/scripts/t4/jumbotron-video.css'
-              });
-            $.getScript("https://assets.scu.edu/scripts/t4/jumbotron-video.js");
-          }
-          if ($('.accordion-item')) {
-            $.getScript("https://www.scu.edu/media/scuedu/script-assets/accordion-toolkit.js");
-          }
-          if ($('.animation-slide-up')) {
-            $.getScript("https://scu.edu/media/scuedu/script-assets/animation.js");
-          }
-          if ($('.code-block')) {
-            $.getScript("https://assets.scu.edu/assets/js/prism.js")
-          }
-          $("table").addClass("table");
-        });
-        if ($('.story-subhead')) {
-          $.getScript("https://assets.scu.edu/public/js/story-subhead.js");
-        }
-      </script>
+      ${afterFooter}
     </html>
   `;
 
