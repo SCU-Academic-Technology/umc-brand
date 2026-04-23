@@ -83,7 +83,7 @@ function Playground({ items, siteMainHeader, lockupHeader, noLockupHeader, foote
   const srcDoc = `
     <!DOCTYPE html>
     <html>
-      <head>${siteHead}</head>
+      <head><base href="https://www.scu.edu/">${siteHead}</head>
       <body>
       ${(headerView || footerView) ? `${activeItem.html}` : ''}
       ${contentTypeView ? `<main id="content">${activeItem.html}</main>` : ''}
