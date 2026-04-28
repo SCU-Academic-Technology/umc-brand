@@ -22,7 +22,7 @@ function Favicon() {
       </div>
 
       {/* DOWNLOAD CARD */}
-      <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm hover:shadow-md transition-shadow">
+      <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm transition-shadow">
 
         {/* Left: Icon & Text */}
         <div className="flex items-center gap-4">

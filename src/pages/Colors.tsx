@@ -51,7 +51,7 @@ const allBrandColors = Object.values(brandColors).flatMap((group) =>
 
 function PassFail({ pass }: { pass: boolean }) {
   return (
-    <span className={`px-2 py-0.5 rounded text-xs font-semibold w-11 text-center ${pass ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+    <span className={`px-2 py-0.5 text-xs font-semibold w-11 text-center ${pass ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
       {pass ? 'Pass' : 'Fail'}
     </span>
   );
@@ -143,7 +143,7 @@ function Colors() {
         </h2>
 
         <p className="mb-8">
-          For more information on specific CMYK, RGB, and Pantone values, <a href="https://www.scu.edu/umc/brand/visual-elements/#content-1252436">visit the UMC Visual Elements page.</a>
+          For more information on specific CMYK, RGB, and Pantone values, <a href="https://www.scu.edu/umc/brand/colors/#content-1302017">visit the UMC Colors page.</a>
         </p>
 
 
