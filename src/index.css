@@ -71,6 +71,13 @@
   font-display: swap;
 }
 
+@font-face{
+    font-family:"Trade Gothic Next W01";
+    src:url(https://assets.scu.edu/fonts/8a6c3750-4927-4649-9dac-87049f5e9700.eot?#iefix);
+    src:url(https://assets.scu.edu/fonts/8a6c3750-4927-4649-9dac-87049f5e9700.eot?#iefix) format("eot"),url(https://assets.scu.edu/fonts/d4eef5b1-2f4a-42d6-ae2d-6220d71243be.woff2) format("woff2"),url(https://assets.scu.edu/fonts/57625f96-ca80-4602-9644-ec1803cb3ba3.woff) format("woff"),url(https://assets.scu.edu/fonts/6618d500-1727-4334-878e-1c4b95192f42.ttf) format("truetype"),url(https://assets.scu.edu/fonts/01ebe944-ca6c-41db-a3ba-b7e2a90536d9.svg#01ebe944-ca6c-41db-a3ba-b7e2a90536d9) format("svg");
+    font-display: swap
+}
+
 @keyframes pop {
   0%   { transform: scale(1); }
   40%  { transform: scale(0.7); }
@@ -78,7 +85,8 @@
 }
 
 :root {
-  font-family: 'SantaClaraNueva', sans-serif;
+  /* font-family: 'SantaClaraNueva', sans-serif; */
+  font-family: 'Trade Gothic Next W01', sans-serif;
   line-height: 1.5;
   font-weight: 400;
 }
@@ -95,17 +103,17 @@ body {
 @layer base {
   h1 {
     @apply text-4xl font-semibold my-2;
-    font-family: 'minion-pro', serif;
+    /* font-family: 'minion-pro', serif; */
   }
 
   h2 {
     @apply text-2xl font-semibold my-2;
-    font-family: 'minion-pro', serif;
+    /* font-family: 'minion-pro', serif; */
   }
 
   h3 {
     @apply text-xl font-semibold my-2;
-    font-family: 'minion-pro', serif;
+    /* font-family: 'minion-pro', serif; */
   }
   p {
     @apply my-2 mb-4;
@@ -119,5 +127,14 @@ body {
 @layer components {
   .container {
     @apply mx-auto p-16 overflow-scroll;
+  }
+}
+
+/* The resizable sidebar panel. react-resizable-panels puts className on an
+   inner div, so target the outer [data-panel] directly. */
+@media (max-width: 767px) {
+  /* Collapse it below the md breakpoint. */
+  [data-panel][data-mobile-hidden] {
+    display: none;
   }
 }

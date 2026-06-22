@@ -1,7 +1,8 @@
 import { NavLink } from 'react-router-dom';
 import logo from '/scu_hor_pos_rgb_2c.png';
+import { pages, layoutPages } from '../pages/registry';
 
-function Navbar({ items, loading }: { items: { name: string; html: string }[], loading?: boolean }) {
+function Navbar({ items, loading, onNavigate }: { items: { name: string; html: string }[], loading?: boolean, onNavigate?: () => void }) {
 
   const getLinkClass = ({ isActive }: { isActive: boolean }) => {
     return `p-2 pl-5 rounded transition-colors cursor-pointer ${isActive
@@ -15,35 +16,24 @@ function Navbar({ items, loading }: { items: { name: string; html: string }[], l
     <>
       <div className="w-full h-full bg-gray-50 p-4 overflow-y-scroll overflow-x-hidden">
         <a href="https://www.scu.edu">
-            <img className="max-w-50" src={logo} alt="SCU logo" width="1200" height="461" />
+            <img className="w-full max-w-50" src={logo} alt="SCU logo" width="1200" height="461" />
             <span className="sr-only">To scu.edu homepage</span>
         </a>
         <h1 className="text-2xl mb-5 mx-2">Design System</h1>
-        <h2 className="text-xl font-semibold mx-2">Style Guide</h2>
-
-        <div className="flex flex-col">
-          <NavLink to="/" className={getLinkClass}>
-            Welcome
-          </NavLink>
-          <NavLink to="/colors" className={getLinkClass}>
-            Colors
-          </NavLink>
-          <NavLink to="/typography" className={getLinkClass}>
-            Typography
-          </NavLink>
-        </div>
-
-
-        <h2 className="text-xl font-semibold mx-2">Assets</h2>
-
-        <div className="flex flex-col">
-          <NavLink to="/logos" className={getLinkClass}>
-            Logos &amp; Lockups
-          </NavLink>
-          <NavLink to="/favicon" className={getLinkClass}>
-            Favicon
-          </NavLink>
-        </div>
+        {["Style Guide", "Assets"].map((section) => (
+          <div key={section}>
+            <h2 className="text-xl font-semibold mx-2">{section}</h2>
+            <div className="flex flex-col">
+              {pages
+                .filter((p) => p.section === section)
+                .map((p) => (
+                  <NavLink key={p.path} to={p.path} className={getLinkClass} onClick={onNavigate}>
+                    {p.label}
+                  </NavLink>
+                ))}
+            </div>
+          </div>
+        ))}
 
         <h2 className="text-xl font-semibold mx-2">Content Types</h2>
         <div className="flex flex-col">
@@ -60,7 +50,7 @@ function Navbar({ items, loading }: { items: { name: string; html: string }[], l
             </svg>
           ) : (
             items.map((item, index) => (
-              <NavLink key={index} to={`/components/${index}`} className={getLinkClass}>
+              <NavLink key={index} to={`/components/${index}`} className={getLinkClass} onClick={onNavigate}>
                 {item.name}
               </NavLink>
             ))
@@ -70,19 +60,11 @@ function Navbar({ items, loading }: { items: { name: string; html: string }[], l
 
         <h2 className="text-xl font-semibold mx-2">Layout Components</h2>
         <div className="flex flex-col">
-          <NavLink to="/main-header" className={getLinkClass}>
-            Main Header
-          </NavLink>
-          <NavLink to="/lockup-header" className={getLinkClass}>
-            Header with Lockup
-          </NavLink>
-          <NavLink to="/no-lockup-header" className={getLinkClass}>
-            Header without Lockup
-          </NavLink>
-
-          <NavLink to="/footer" className={getLinkClass}>
-            Footer
-          </NavLink>
+          {layoutPages.map((p) => (
+            <NavLink key={p.path} to={p.path} className={getLinkClass} onClick={onNavigate}>
+              {p.label}
+            </NavLink>
+          ))}
         </div>
       </div>
     </>

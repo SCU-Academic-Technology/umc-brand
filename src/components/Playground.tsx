@@ -105,7 +105,7 @@ function Playground({ items, siteMainHeader, lockupHeader, noLockupHeader, foote
         <h1>{componentName}</h1>
         <label className="sr-only" htmlFor="widths">Choose a screen width:</label>
         <select
-          className="gray-200 rounded-sm mx-8 h-8 border border-black"
+          className="hidden md:inline-block gray-200 rounded-sm mx-8 h-8 border border-black"
           name="widths"
           onChange={handleChange}
           size={1}
