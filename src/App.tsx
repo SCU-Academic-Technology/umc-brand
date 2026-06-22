@@ -70,15 +70,15 @@ function App() {
   };
   const onHandleMove = (e: React.PointerEvent) => {
     if (dragStartY.current === null) return;
-    setDragY(Math.max(0, e.clientY - dragStartY.current)); // down only
+    setDragY(Math.max(0, e.clientY - dragStartY.current));
   };
   const onHandleEnd = () => {
     const moved = dragY;
     dragStartY.current = null;
     setDragging(false);
     setDragY(0);
-    // ponytail: tap (<10px) closes; drag past 100px closes; partial drag snaps back
-    if (moved < 10 || moved > 100) setDrawerOpen(false);
+    // ponytail: tap (|moved|<10) closes; drag down past 100 closes; up-drag or partial down snaps back
+    if (Math.abs(moved) < 10 || moved > 100) setDrawerOpen(false);
   };
 
   // Title shown in the mobile bar: static page, layout component, or content type name.
@@ -220,14 +220,14 @@ function App() {
         <button
           aria-label="Open menu"
           onClick={() => setDrawerOpen(true)}
-          className="flex items-center gap-2 px-5 h-full text-gray-700 w-full"
+          className="flex items-center gap-2 px-5 h-full text-gray-700 w-full cursor-pointer"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
             <line x1="3" y1="6" x2="21" y2="6" />
             <line x1="3" y1="12" x2="21" y2="12" />
             <line x1="3" y1="18" x2="21" y2="18" />
           </svg>
-          {pageTitle && <span className="font-semibold">{pageTitle}</span>}
+          {pageTitle && <span className="font-semibold pl-2">{pageTitle}</span>}
         </button>
       </div>
 
@@ -250,7 +250,7 @@ function App() {
             <span className="mx-auto h-1 w-10 rounded-full bg-gray-300" />
           </div>
           <div className="flex-1 overflow-y-auto">
-            <button aria-label="Close menu" onClick={() => setDrawerOpen(false)} className="absolute right-3 top-10 text-gray-500">
+            <button aria-label="Close menu" onClick={() => setDrawerOpen(false)} className="absolute right-3 top-10 text-gray-500 hover:text-gray-400 focus:text-gray-600 cursor-pointer">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                 <line x1="6" y1="6" x2="18" y2="18" />
                 <line x1="18" y1="6" x2="6" y2="18" />

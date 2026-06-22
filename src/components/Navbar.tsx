@@ -15,8 +15,8 @@ function Navbar({ items, loading, onNavigate }: { items: { name: string; html: s
   return (
     <>
       <div className="w-full h-full bg-gray-50 p-4 overflow-y-scroll overflow-x-hidden">
-        <a href="https://www.scu.edu">
-            <img className="w-full max-w-50" src={logo} alt="SCU logo" width="1200" height="461" />
+        <a className="w-fit" href="https://www.scu.edu">
+            <img className="w-50" src={logo} alt="SCU logo" />
             <span className="sr-only">To scu.edu homepage</span>
         </a>
         <h1 className="text-2xl mb-5 mx-2">Design System</h1>

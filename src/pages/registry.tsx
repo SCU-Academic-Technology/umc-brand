@@ -3,7 +3,7 @@ import Colors from "./Colors";
 import Typography from "./Typography";
 import Logos from "./Logos";
 import Favicon from "./Favicon";
-import Style from "./Style";
+import ThirdParty from "./ThirdParty";
 
 export interface PageDef {
   path: string;
@@ -20,7 +20,7 @@ export const pages: PageDef[] = [
   { path: "/typography", label: "Typography",      section: "Style Guide", element: <Typography /> },
   { path: "/logos",      label: "Logos & Lockups", section: "Assets",      element: <Logos /> },
   { path: "/favicon",    label: "Favicon",         section: "Assets",      element: <Favicon /> },
-  { path: "/style",      label: "Style",           section: "",            element: <Style /> }, // route only, no nav link
+  { path: "/third-party", label: "Third-Party Vendors", section: "Assets",  element: <ThirdParty /> },
 ];
 
 // Layout components share one PlaygroundRoute element — App injects it.

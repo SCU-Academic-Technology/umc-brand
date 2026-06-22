@@ -82,7 +82,7 @@ function Colors() {
         <h1 className="text-4xl mb-3">
           Colors
         </h1 >
-        <h2 className="mb-[-75px]">
+        <h2 className="-mb-18.75">
           Primary Colors
         </h2>
         <div className="flex h-48 overflow-y-clip overflow-x-visible border-b-gray-400 border-b mb-4">
@@ -98,7 +98,7 @@ function Colors() {
         </div>
         <p className="mb-8">Our core brand colors. Use these as a foundation for most communications and interface elements.</p>
 
-        <h2 className="mb-[-75px]">
+        <h2 className="-mb-18.75">
           Secondary Colors
         </h2>
         <div className="flex h-48 overflow-y-clip overflow-x-visible border-b-gray-400 border-b mb-8">
@@ -116,7 +116,7 @@ function Colors() {
           Offers flexibility and variety. Inspired by the diversity of our campus, these colors complement the primary palette and add visual interest.
         </p>
 
-        <h2 className="mb-[-75px]">
+        <h2 className="-mb-18.75">
           Neutral Colors
         </h2>
         <div className="flex h-48 overflow-y-clip overflow-x-visible border-b-gray-400 border-b mb-8">
@@ -194,7 +194,7 @@ function Colors() {
             const ratio = contrastRatio(selectedColor, selectedTextColor);
             return (
                 <div className="flex flex-col lg:flex-row gap-8 mt-4 bg-[#F8F9FA]">
-                    <div className="flex flex-col gap-3 w-full lg:w-1/3 p-[2rem]">
+                    <div className="flex flex-col gap-3 w-full lg:w-1/3 p-8">
                         <p className="text-2xl font-bold">Contrast Ratio</p>
                         <p className="text-6xl">{ratio.toFixed(2)}:1</p>
                         <div className="flex gap-8 mt-2">

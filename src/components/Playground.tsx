@@ -101,8 +101,8 @@ function Playground({ items, siteMainHeader, lockupHeader, noLockupHeader, foote
 
   return (
     <div className="w-full h-full bg-neutral-100">
-      <div className="flex items-baseline p-4 bg-white">
-        <h1>{componentName}</h1>
+      <div className="flex items-center p-6 px-8 bg-white">
+        <h1 className="mb-0">{componentName}</h1>
         <label className="sr-only" htmlFor="widths">Choose a screen width:</label>
         <select
           className="hidden md:inline-block gray-200 rounded-sm mx-8 h-8 border border-black"

@@ -102,7 +102,7 @@ body {
 
 @layer base {
   h1 {
-    @apply text-4xl font-semibold my-2;
+    @apply text-4xl font-semibold my-2 mb-5;
     /* font-family: 'minion-pro', serif; */
   }
 
