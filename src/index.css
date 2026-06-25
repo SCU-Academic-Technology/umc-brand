@@ -100,6 +100,15 @@ body {
   min-height: 100vh;
 }
 
+/* body is a centering flex container (Vite default); without an explicit size #root
+   collapses to its content. Width: layout overflowed (~3000px) on mobile. Height:
+   the panels' inline height:100% had nothing to resolve against, breaking the
+   h-full chain (Welcome couldn't vertically center; tall pages overflowed). */
+#root {
+  width: 100%;
+  height: 100dvh;
+}
+
 @layer base {
   h1 {
     @apply text-4xl font-semibold my-2 mb-5;
@@ -120,7 +129,7 @@ body {
   }
 
   a {
-    @apply text-[#b30738] hover:underline;
+    @apply text-[#A32035] hover:underline;
   }
 }
 
@@ -135,6 +144,6 @@ body {
 @media (max-width: 767px) {
   /* Collapse it below the md breakpoint. */
   [data-panel][data-mobile-hidden] {
-    display: none;
+    display: none !important;
   }
 }

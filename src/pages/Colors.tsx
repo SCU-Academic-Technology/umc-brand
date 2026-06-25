@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react"
 import { useLocation } from "react-router-dom"
 import ColorChip from "../components/ColorChip"
+import ColorCard from "../components/ColorCard"
 import ColorButton from "../components/ColorButton"
 import { brandColors } from "../data/brandColors"
 
@@ -82,10 +83,10 @@ function Colors() {
         <h1 className="text-4xl mb-3">
           Colors
         </h1 >
-        <h2 className="-mb-18.75">
+        <h2 className="mb-2 md:-mb-18.75">
           Primary Colors
         </h2>
-        <div className="flex h-48 overflow-y-clip overflow-x-visible border-b-gray-400 border-b mb-4">
+        <div className="hidden md:flex h-48 overflow-y-clip overflow-x-visible border-b-gray-400 border-b mb-4">
           {flattenColors(brandColors.primary).map((color, index) => (
             <ColorChip
               key={color.name}
@@ -96,12 +97,17 @@ function Colors() {
             />
           ))}
         </div>
+        <div tabIndex={0} className="always-scrollbar md:hidden flex gap-3 overflow-x-auto snap-x snap-mandatory pb-4 mb-4 w-full">
+          {flattenColors(brandColors.primary).map((color) => (
+            <ColorCard key={color.name} name={color.name} hex={color.hex} textColor={color.textColor} />
+          ))}
+        </div>
         <p className="mb-8">Our core brand colors. Use these as a foundation for most communications and interface elements.</p>
 
-        <h2 className="-mb-18.75">
+        <h2 className="mb-2 md:-mb-18.75">
           Secondary Colors
         </h2>
-        <div className="flex h-48 overflow-y-clip overflow-x-visible border-b-gray-400 border-b mb-8">
+        <div className="hidden md:flex h-48 overflow-y-clip overflow-x-visible border-b-gray-400 border-b mb-8">
           {flattenColors(brandColors.secondary).map((color, index) => (
             <ColorChip
               key={color.name}
@@ -112,14 +118,19 @@ function Colors() {
             />
           ))}
         </div>
+        <div tabIndex={0} className="always-scrollbar md:hidden flex gap-3 overflow-x-auto snap-x snap-mandatory pb-4 mb-4">
+          {flattenColors(brandColors.secondary).map((color) => (
+            <ColorCard key={color.name} name={color.name} hex={color.hex} textColor={color.textColor} />
+          ))}
+        </div>
         <p className="mb-8">
           Offers flexibility and variety. Inspired by the diversity of our campus, these colors complement the primary palette and add visual interest.
         </p>
 
-        <h2 className="-mb-18.75">
+        <h2 className="mb-2 md:-mb-18.75">
           Neutral Colors
         </h2>
-        <div className="flex h-48 overflow-y-clip overflow-x-visible border-b-gray-400 border-b mb-8">
+        <div className="hidden md:flex h-48 overflow-y-clip overflow-x-visible border-b-gray-400 border-b mb-8">
           {flattenColors(brandColors.tertiary).map((color, index) => (
             <ColorChip
               key={color.name}
@@ -128,6 +139,11 @@ function Colors() {
               hex={color.hex}
               textColor={color.textColor}
             />
+          ))}
+        </div>
+        <div tabIndex={0} className="always-scrollbar md:hidden flex gap-3 overflow-x-auto snap-x snap-mandatory pb-4 mb-4">
+          {flattenColors(brandColors.tertiary).map((color) => (
+            <ColorCard key={color.name} name={color.name} hex={color.hex} textColor={color.textColor} />
           ))}
         </div>
         <p className="mb-8">
@@ -156,7 +172,7 @@ function Colors() {
 
             <h3>Choose a Background Color</h3>
 
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-auto md:gap-4">
             {allBrandColors.map((color) => (
                 <ColorButton
                 key={color.name}
@@ -172,7 +188,7 @@ function Colors() {
 
             <h3>Choose a Text Color</h3>
 
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-auto md:gap-4">
             {allBrandColors
                 .filter((color) => contrastRatio(selectedColor, color.hex) >= 3)
                 .map((color) => (

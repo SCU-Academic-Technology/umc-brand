@@ -15,8 +15,8 @@ function Navbar({ items, loading, onNavigate }: { items: { name: string; html: s
   return (
     <>
       <div className="w-full h-full bg-gray-50 p-4 overflow-y-scroll overflow-x-hidden">
-        <a className="w-fit" href="https://www.scu.edu">
-            <img className="w-50" src={logo} alt="SCU logo" />
+        <a className="w-fit h-19" href="https://www.scu.edu">
+            <img className="w-50" src={logo} height={76} alt="SCU logo" />
             <span className="sr-only">To scu.edu homepage</span>
         </a>
         <h1 className="text-2xl mb-5 mx-2">Design System</h1>
@@ -38,14 +38,27 @@ function Navbar({ items, loading, onNavigate }: { items: { name: string; html: s
         <h2 className="text-xl font-semibold mx-2">Content Types</h2>
         <div className="flex flex-col">
           {loading ? (
-            <svg viewBox="0 0 220 156" xmlns="http://www.w3.org/2000/svg" className="w-full mt-1">
-              <g className="animate-pulse" fill="#d1d5db">
+            <svg viewBox="0 0 220 309" xmlns="http://www.w3.org/2000/svg" className="w-full mt-1">
+              <defs>
+                <linearGradient id="skeleton-shimmer" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="60" y2="0">
+                  <stop offset="0%" stopColor="#e5e7eb" />
+                  <stop offset="50%" stopColor="#f3f4f6" />
+                  <stop offset="100%" stopColor="#e5e7eb" />
+                  <animate attributeName="x1" from="-120" to="220" dur="1.4s" repeatCount="indefinite" />
+                  <animate attributeName="x2" from="-60" to="280" dur="1.4s" repeatCount="indefinite" />
+                </linearGradient>
+              </defs>
+              <g fill="url(#skeleton-shimmer)">
                 <rect x="16" y="6"   width="130" height="15" rx="3" />
-                <rect x="16" y="32"  width="160" height="15" rx="3" />
-                <rect x="16" y="58"  width="100" height="15" rx="3" />
-                <rect x="16" y="84"  width="145" height="15" rx="3" />
-                <rect x="16" y="110" width="120" height="15" rx="3" />
-                <rect x="16" y="136" width="155" height="15" rx="3" />
+                <rect x="16" y="38"  width="160" height="15" rx="3" />
+                <rect x="16" y="70"  width="100" height="15" rx="3" />
+                <rect x="16" y="102" width="145" height="15" rx="3" />
+                <rect x="16" y="134" width="120" height="15" rx="3" />
+                <rect x="16" y="166" width="155" height="15" rx="3" />
+                <rect x="16" y="198" width="110" height="15" rx="3" />
+                <rect x="16" y="230" width="140" height="15" rx="3" />
+                <rect x="16" y="262" width="125" height="15" rx="3" />
+                <rect x="16" y="294" width="150" height="15" rx="3" />
               </g>
             </svg>
           ) : (

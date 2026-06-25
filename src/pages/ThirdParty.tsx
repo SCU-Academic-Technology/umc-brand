@@ -17,7 +17,7 @@ function ThirdParty() {
   return (
     <div className="container mx-auto p-16">
       {/* HEADER SECTION */}
-      <h1 className="text-4xl font-bold text-gray-900 mb-4">
+      <h1 className="text-4xl text-gray-900 mb-3">
         Third-Party Vendors
       </h1>
       <p className="text-gray-800 mb-8">
@@ -27,7 +27,7 @@ function ThirdParty() {
         integration needs to stay stable long-term, host your own copy &mdash;
         see{" "}
         <a
-          className="text-[#9E1B32] underline cursor-pointer"
+          className="text-[#A32035] underline cursor-pointer"
           onClick={() =>
             document
               .getElementById("long-term-support")
@@ -41,7 +41,7 @@ function ThirdParty() {
 
       {/* CSS */}
       <div className="mb-12">
-        <h2>CSS Stylesheet (Bootstrap)</h2>
+        <h2 className="text-2xl font-semibold mb-4">CSS Stylesheet (Bootstrap)</h2>
         <p className="text-gray-800">
           Add this to the <span className="font-mono">&lt;head&gt;</span> of
           your page:
@@ -58,7 +58,7 @@ function ThirdParty() {
 
       {/* JS */}
       <div className="mb-12">
-        <h2>JS Script (Bootstrap + jQuery)</h2>
+        <h2 className="text-2xl font-semibold mb-4">JS Script (Bootstrap + jQuery)</h2>
         <p className="text-gray-800">
           Add this before the closing{" "}
           <span className="font-mono">&lt;/body&gt;</span> tag:
@@ -74,7 +74,7 @@ function ThirdParty() {
       </div>
 
       {/* LONG-TERM SUPPORT */}
-      <h2 id="long-term-support">Long-term support</h2>
+      <h2 id="long-term-support" className="text-2xl font-semibold mb-4">Long-term support</h2>
       <p className="text-gray-800 mt-2">
         The hosted URLs above track SCU's current platform, so the files can
         change without notice. If you need your integration to stay stable for
@@ -95,17 +95,15 @@ function ThirdParty() {
         </li>
       </ol>
       <p className="text-gray-800 mt-3 mb-12">
-        Why snapshot? Internal SCU sites stay current automatically because their code syncs with
+        Why snapshot? Internal SCU sites are maintained because their code syncs with
         University Marketing and Communication (UMC)'s updates in the CMS. A third-party site cannot update automatically, so a snapshot you own can be frozen at a
         known-good version, keeping the website working and allowing for upgrades on your own schedule rather than being caught off guard.
       </p>
 
       {/* FONTAWESOME */}
-      <h2>Need FontAwesome or specific fonts?</h2>
+      <h2 className="text-2xl font-semibold mb-4">Need FontAwesome or specific fonts?</h2>
       <p className="text-gray-800">
-        FontAwesome is not included in these bundles. If your integration requires FontAwesome access, or if you are experiencing CORS errors with a specific font, <a href="https://scuweb.zendesk.com/" className="inline-flex items-center">
-            submit a support ticket to UMC&nbsp;<ExternalLink size={14} />
-        </a>.
+        FontAwesome is not included in these bundles. If your integration requires FontAwesome access, or if you are experiencing CORS errors with a specific font, <a href="https://scuweb.zendesk.com/" className="inline-flex items-center">submit a support ticket to UMC&nbsp;<ExternalLink size={14} /></a>.
     </p>
     </div>
   );

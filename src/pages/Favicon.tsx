@@ -13,20 +13,20 @@ function Favicon() {
 
       {/* HEADER SECTION */}
       <div className="">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">
+        <h1 className="text-4xl text-gray-900 mb-3">
           Favicon
         </h1>
         <p className="text-gray-800 mb-8">
-          An icon that displays in a browser's tab, bookmarks, history, and home screen shortcuts.
+          The icon that displays in a browser's tab, bookmarks, history, and home screen shortcuts.
         </p>
       </div>
 
       {/* DOWNLOAD CARD */}
-      <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm transition-shadow">
+      <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
 
         {/* Left: Icon & Text */}
         <div className="flex items-center gap-4">
-          <div className="h-12 w-12 bg-white rounded-lg border border-gray-200 flex items-center justify-center shadow-sm">
+          <div className="h-12 w-12 bg-white rounded-lg border border-gray-200 flex items-center justify-center">
             {/* ZIP File Icon */}
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-file-zip" viewBox="0 0 16 16">
               <path d="M6.5 7.5a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v.938l.4 1.599a1 1 0 0 1-.416 1.074l-.93.62a1 1 0 0 1-1.109 0l-.93-.62a1 1 0 0 1-.415-1.074l.4-1.599zm2 0h-1v.938a1 1 0 0 1-.03.243l-.4 1.598.93.62.93-.62-.4-1.598a1 1 0 0 1-.03-.243z" />
@@ -34,8 +34,7 @@ function Favicon() {
             </svg>
           </div>
           <div>
-            <h3 className="font-semibold text-gray-900">scu-favicons.zip</h3>
-            <p className="text-sm text-gray-500">Includes .ico, .png, and .svg</p>
+            <h3 className="font-semibold">scu-favicons.zip</h3>
           </div>
         </div>
 
@@ -43,7 +42,7 @@ function Favicon() {
         <a
           href={downloadLink}
           download="scu-favicons.zip"
-          className="flex items-center gap-2 bg-[#9E1B32] hover:bg-[#7a1526] text-white font-medium px-5 py-2.5 rounded transition-colors"
+          className="flex items-center gap-2 bg-[#A32035] hover:bg-[#862633] text-white font-medium px-5 py-2.5 rounded transition-colors"
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -53,7 +52,7 @@ function Favicon() {
       </div>
 
       <div className="mt-8">
-        <h2 className="text-2xl mb-6">Preview</h2>
+        <h2 className="text-2xl font-semibold mb-4">Preview</h2>
         <div className="flex gap-8 items-end">
           <div className="text-center">
             <div className="w-32 h-32 bg-gray-100 rounded flex items-center justify-center mb-2 mx-auto border">
@@ -78,7 +77,7 @@ function Favicon() {
 
 
       <div className="mt-12">
-        <h2 className="text-2xl">Quick Start</h2>
+        <h2 className="text-2xl font-semibold mb-4">Quick Start</h2>
         <p className="text-gray-800">
           In most cases, browsers will display <a href="/favicon-96x96-icon-img.png">favicon-96x96-icon-img.png</a> correctly.
           For example, this website uses the following code in the head for its favicon:

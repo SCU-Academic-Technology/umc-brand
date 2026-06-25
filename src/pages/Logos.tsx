@@ -4,7 +4,7 @@ function Logos() {
   return (
     <>
       <div className="container mx-auto p-16">
-        <h1 className="text-4xl">
+        <h1 className="text-4xl mb-3">
           Logos and Lockups
         </h1>
 
@@ -13,7 +13,7 @@ function Logos() {
         </p>
 
 
-        <h2 className="text-2xl">
+        <h2 className="text-2xl font-semibold mb-4">
           Request a Logo
         </h2>
 

@@ -1,9 +1,11 @@
 import Welcome from "./Welcome";
 import Colors from "./Colors";
-import Typography from "./Typography";
+// import Typography from "./Typography";
 import Logos from "./Logos";
 import Favicon from "./Favicon";
 import ThirdParty from "./ThirdParty";
+import Accessibility from "./Accessibility";
+import WebDevelopers from "./WebDevelopers";
 
 export interface PageDef {
   path: string;
@@ -17,7 +19,11 @@ export interface PageDef {
 export const pages: PageDef[] = [
   { path: "/",           label: "Welcome",         section: "Style Guide", element: <Welcome /> },
   { path: "/colors",     label: "Colors",          section: "Style Guide", element: <Colors /> },
-  { path: "/typography", label: "Typography",      section: "Style Guide", element: <Typography /> },
+  { path: "/accessibility",     label: "Accessibility",          section: "Style Guide", element: <Accessibility /> },
+
+  { path: "/web-developers",     label: "For Web Developers",          section: "Style Guide", element: <WebDevelopers /> },
+
+//   { path: "/typography", label: "Typography",      section: "Style Guide", element: <Typography /> },
   { path: "/logos",      label: "Logos & Lockups", section: "Assets",      element: <Logos /> },
   { path: "/favicon",    label: "Favicon",         section: "Assets",      element: <Favicon /> },
   { path: "/third-party", label: "Third-Party Vendors", section: "Assets",  element: <ThirdParty /> },

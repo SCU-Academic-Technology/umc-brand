@@ -157,9 +157,9 @@ function App() {
 
   if (!loaded && needsData) {
     return (
-      <Group className="flex h-screen w-screen overflow-hidden bg-white">
+      <Group className="flex h-screen w-screen overflow-hidden bg-white main-container">
         {/* LEFT COLUMN CONTAINER: navbar (desktop only) */}
-        <Panel collapsible minSize={200} defaultSize={300} className="border-r border-gray-200 max-w-100" data-mobile-hidden>
+        <Panel minSize={200} defaultSize={250} maxSize={300} className="border-r border-gray-200" data-mobile-hidden>
           <Navbar items={contentTypeData} loading={!loaded} />
         <Separator className="w-2 bg-gray-200 hover:bg-gray-500" />
         </Panel>
@@ -179,7 +179,7 @@ function App() {
     <>
       <Group className="flex h-screen w-screen overflow-hidden bg-white">
         {/* LEFT COLUMN CONTAINER: navbar (desktop only) */}
-        <Panel collapsible minSize={200} defaultSize={250} maxSize={300} className="border-r border-gray-200" data-mobile-hidden>
+        <Panel minSize={200} defaultSize={250} maxSize={300} className="border-r border-gray-200" data-mobile-hidden>
           <Navbar items={contentTypeData} loading={!loaded} />
         </Panel>
 
